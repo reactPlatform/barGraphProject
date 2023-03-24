@@ -1,4 +1,4 @@
-
+import React,{ useState } from 'react';
 import './App.css';
 import Card from './components/UI/Card';
 import ExpenseItem from './components/Expenses/ExpenseItem';
@@ -25,10 +25,17 @@ const App = () => {
       location: 'Porayar',
     },
   ]
+  const [expenseList,updateExpenseList] = useState(expenses); 
+  const addExpenseHandler = expense => {
+    expenseList.push(expense);
+    updateExpenseList([...expenseList]);
+    
+    
+  };
   return (
     <Card className='expenses'>
-      <NewExpense />
-      {expenses.map((expense) => <ExpenseItem date={expense.date} title={expense.title} amount={expense.amount} location={expense.location}></ExpenseItem>)}
+      <NewExpense onAddExpense = {addExpenseHandler}/>
+      {expenseList.map((expense) => <ExpenseItem date={expense.date} title={expense.title} amount={expense.amount} location={expense.location}></ExpenseItem>)}
       
     </Card>
   );
