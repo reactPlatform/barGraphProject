@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import './App.css';
 import Card from './components/UI/Card';
-import ExpenseItem from './components/Expenses/ExpenseItem';
+import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpenses/NewExpense';
 
 const App = () => {
@@ -35,8 +35,7 @@ const App = () => {
   return (
     <Card className='expenses'>
       <NewExpense onAddExpense = {addExpenseHandler}/>
-      {expenseList.map((expense) => <ExpenseItem date={expense.date} title={expense.title} amount={expense.amount} location={expense.location}></ExpenseItem>)}
-      
+      <Expenses items={expenseList}/>     
     </Card>
   );
 }
