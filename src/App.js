@@ -8,7 +8,7 @@ const App = () => {
   const expenses = [
     {
       id:1,
-      date: new Date(2022,3,20),
+      date: new Date(2020,3,20),
       title: 'Horlicks',
       amount: 110,
       location: 'Chennai',
