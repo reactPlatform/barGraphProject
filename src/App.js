@@ -7,18 +7,21 @@ import NewExpense from './components/NewExpenses/NewExpense';
 const App = () => {
   const expenses = [
     {
+      id:1,
       date: new Date(2022,3,20),
       title: 'Horlicks',
       amount: 110,
       location: 'Chennai',
     },
     {
+      id:2,
       date: new Date(2022,5,17),
       title: 'Boost',
       amount: 150,
       location: 'Thenkasi',
     },
     {
+      id:3,
       date: new Date(2022,6,10),
       title: 'Bournvita',
       amount: 200,
@@ -27,8 +30,9 @@ const App = () => {
   ]
   const [expenseList,updateExpenseList] = useState(expenses); 
   const addExpenseHandler = expense => {
-    expenseList.push(expense);
-    updateExpenseList([...expenseList]);
+    
+    updateExpenseList(() => {
+      return [expense,...expenseList]});
     
     
   };
