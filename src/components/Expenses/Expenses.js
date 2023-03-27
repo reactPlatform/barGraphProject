@@ -18,6 +18,7 @@ const Expenses = (props) => {
 
   let expenseContent = <p>No expenses found!</p>;
   let oneExpenseContent = '';
+  
   if(filteredExpenses.length > 0){
     expenseContent = filteredExpenses.map((expense) => (
     <ExpenseItem 

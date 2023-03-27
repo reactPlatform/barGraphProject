@@ -47,8 +47,19 @@ const ExpenseForm = (props) => {
         setDate('');
         setLocation('');
     };
-    return(
-        <form onSubmit={submitHandler}>
+    const [showForm,setShowForm] = useState(false);
+    const showFormContent = () => {
+        setShowForm(true);
+        
+    }
+    const hideFormContent = () => {
+        setShowForm(false);
+    }
+    
+    let formContent = (<button className='new-expense__actions' onClick={showFormContent}>Add New Expense</button>)
+    if(showForm){
+        formContent = (
+            <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
@@ -67,10 +78,21 @@ const ExpenseForm = (props) => {
                     <input type='text' onChange={locationChangeHandler} value={enteredLocation}/>
                 </div>
                 <div className='new-expense__actions'>
+                    <button onClick={hideFormContent}>Cancel</button>
+                </div>
+                <div className='new-expense__actions'>
                     <button type='submit'>Add Expense</button>
                 </div>
+                
             </div>
         </form>
+        )
+    }
+    return(
+        <div>
+        {formContent}    
+        
+        </div>
     )
 };
 export default ExpenseForm;
